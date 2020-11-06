@@ -17,23 +17,18 @@ public class Status {
         }
     }
 
-    public void updateStatus(JSONObject json) {
-        try {
-            this.mouseX = json.getInt("mouseX");
-            this.mouseY = json.getInt("mouseY");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        handleStatus();
-    }
-
-    public void handleStatus() {
-        robot.mouseMove(mouseX, mouseY);
-    }
-
     public void typeKey(int keyEvent) {
         robot.keyPress(keyEvent);
         robot.keyRelease(keyEvent);
+    }
+    public void moveMouse(JSONObject json) {
+        try {
+            this.mouseX = json.getInt("mouseX");
+            this.mouseY = json.getInt("mouseY");
+            robot.mouseMove(mouseX, mouseY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getMouseX() {
@@ -51,4 +46,5 @@ public class Status {
     public void setMouseY(int mouseY) {
         this.mouseY = mouseY;
     }
+
 }

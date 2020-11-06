@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SocketIOTest" />
+        <module name="Fernwartung-Java" />
       </profile>
     </annotationProcessing>
   </component>

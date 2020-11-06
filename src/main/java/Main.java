@@ -1,9 +1,13 @@
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Main {
     private static Main main;
     private final String URL = "http://localhost:3000/";
     private Connection connection;
     private String ID;
     private Status status;
+    private Frame frame;
 
     public Main() {
         if (this.main == null) {
@@ -16,12 +20,6 @@ public class Main {
         stream.start();
     }
 
-
-    public static void main(String[] args) {
-        System.out.println("Start");
-        new Main();
-    }
-
     public static Main getMain() {
         return main;
     }
@@ -30,9 +28,21 @@ public class Main {
         return ID;
     }
 
-    public void setID(String ID) {
-        System.out.println("ID::" + ID);
-        this.ID = ID;
+    public void setID(JSONObject jsonId) {
+        try {
+            String id = jsonId.getString("id");
+            String shortId = String.valueOf(jsonId.getInt("shortId"));
+
+            System.out.println("ID::" + id+", "+"SHORTID::"+shortId);
+            this.ID = id;
+            if(this.frame!= null){
+                frame.changeID(shortId);
+            }else{
+                this.frame = new Frame(shortId);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public Status getStatus() {
@@ -42,4 +52,11 @@ public class Main {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+
+    public static void main(String[] args) {
+        System.out.println("Start");
+        new Main();
+    }
+
 }

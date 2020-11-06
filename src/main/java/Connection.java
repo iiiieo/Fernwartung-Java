@@ -70,23 +70,23 @@ public class Connection {
                 public void call(Object... args) {
                     System.out.println("Disconnected");
                 }
-            }).on("clientID", new Emitter.Listener() {
+            }).on("clientId", new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    String id = (String) args[0];
-                    Main.getMain().setID(id);
-                }
-            }).on("requestStatus", new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    JSONObject json = (JSONObject) args[0];
-                    Main.getMain().getStatus().updateStatus(json);
+                    JSONObject jsonId = (JSONObject) args[0];
+                    Main.getMain().setID(jsonId);
                 }
             }).on("pressKey", new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
                     int keyEvent = (int) args[0];
                     Main.getMain().getStatus().typeKey(keyEvent);
+                }
+            }).on("moveMouse", new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    JSONObject json = (JSONObject) args[0];
+                    Main.getMain().getStatus().moveMouse(json);
                 }
             });
         }

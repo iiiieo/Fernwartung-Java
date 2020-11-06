@@ -28,7 +28,7 @@ public class VideoStream extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        while (!isInterrupted()) {
             BufferedImage screenCapture = robot.createScreenCapture(screenRectangle);
             String imageBase65String = encodeToBase64(screenCapture, "jpeg");
             connection.getEmitter().sendBasse64Image(imageBase65String);
