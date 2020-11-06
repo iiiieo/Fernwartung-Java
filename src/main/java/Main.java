@@ -3,8 +3,8 @@ import org.json.JSONObject;
 
 public class Main {
     private static Main main;
-    //private final String URL = "http://localhost:3000/";
-    private final String URL = "https://fernwartung-java.herokuapp.com/";
+    private final String URL = "http://localhost:3000/";
+    //private final String URL = "https://fernwartung-java.herokuapp.com/";
     private Connection connection;
     private String ID;
     private Status status;
