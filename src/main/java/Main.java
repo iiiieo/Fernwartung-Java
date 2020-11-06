@@ -3,7 +3,8 @@ import org.json.JSONObject;
 
 public class Main {
     private static Main main;
-    private final String URL = "http://localhost:3000/";
+    //private final String URL = "http://localhost:3000/";
+    private final String URL = "https://fernwartung-java.herokuapp.com/";
     private Connection connection;
     private String ID;
     private Status status;
@@ -15,6 +16,7 @@ public class Main {
         }
         connection = new Connection(URL);
         this.status = new Status();
+        this.frame = new Frame("Connecting...");
         connection.getEmitter().requestStatus();
         VideoStream stream = new VideoStream(connection);
         stream.start();
@@ -35,11 +37,7 @@ public class Main {
 
             System.out.println("ID::" + id+", "+"SHORTID::"+shortId);
             this.ID = id;
-            if(this.frame!= null){
-                frame.changeID(shortId);
-            }else{
-                this.frame = new Frame(shortId);
-            }
+            frame.changeText(shortId);
         } catch (JSONException e) {
             e.printStackTrace();
         }

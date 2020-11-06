@@ -6,7 +6,7 @@ public class Frame extends JFrame{
     public Frame(String id) {
         super();
         this.setSize(new Dimension(300, 100));
-        this.setTitle("Fernwartung Client ID");
+        this.setTitle("Fernwartung Client");
         this.setFocusable(true);
         this.setFocusTraversalKeysEnabled(true);
         this.setResizable(false);
@@ -18,7 +18,7 @@ public class Frame extends JFrame{
         this.add(idLbl);
         this.setVisible(true);
     }
-    public void changeID(String id){
-        idLbl.setText(id);
+    public void changeText(String text){
+        idLbl.setText(text);
     }
 }
