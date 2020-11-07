@@ -2,6 +2,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
 
 public class Status {
     private int mouseX, mouseY;
@@ -26,6 +27,8 @@ public class Status {
             this.mouseX = json.getInt("mouseX");
             this.mouseY = json.getInt("mouseY");
             robot.mouseMove(mouseX, mouseY);
+            robot.mousePress(InputEvent.BUTTON1_MASK);
+            robot.mouseRelease(InputEvent.BUTTON1_MASK);
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -69,6 +69,7 @@ public class Connection {
                 @Override
                 public void call(Object... args) {
                     System.out.println("Disconnected");
+                    Main.getMain().getFrame().changeText("Connecting...");
                 }
             }).on("clientId", new Emitter.Listener() {
                 @Override

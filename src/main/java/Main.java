@@ -43,6 +43,10 @@ public class Main {
         }
     }
 
+    public Frame getFrame() {
+        return frame;
+    }
+
     public Status getStatus() {
         return status;
     }
